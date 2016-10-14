@@ -1,0 +1,14 @@
+{
+    "lista":[
+        {"typeName" :"Professor", "salario" :10000.0},
+        {"typeName" :"Aluno", "idade" :18},
+        {"typeName" :"Professor", "salario" :10000.0},
+        {"typeName" :"Aluno", "idade" :22},
+        {"typeName" :"Aluno", "idade" :23},
+        {"typeName" :"Aluno", "idade" :27},
+        {"typeName" :"Professor", "salario" :4000.0},
+        {"typeName" :"Professor", "salario" :2000.0},
+        {"typeName" :"Professor", "salario" :8000.0},
+        {"typeName" :"Aluno", "idade" :30}
+    ]
+}
