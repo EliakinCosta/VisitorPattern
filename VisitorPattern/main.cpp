@@ -8,6 +8,7 @@
 #include <QIODevice>
 #include <QDebug>
 #include <QScopedPointer>
+#include <QDirIterator>
 
 #include "visitor.h"
 #include "ielement.h"
@@ -16,13 +17,26 @@
 #include "idademediaalunovisitor.h"
 #include "salariomedioprofessorvisitor.h"
 
-QVariantMap readFromJson()
+QString findFileWithExtension(QString extension)
 {
     QDir projectDir = QDir(qApp->applicationDirPath());
     projectDir.cdUp();
 
+    QDirIterator dirIt(projectDir.absolutePath(), QDirIterator::Subdirectories);
+    while (dirIt.hasNext()) {
+        dirIt.next();
+        if (QFileInfo(dirIt.filePath()).isFile())
+          if (QFileInfo(dirIt.filePath()).suffix() == extension)
+            return dirIt.filePath();
+    }
+    return "";
+}
+
+
+QVariantMap readFromJson()
+{
     QFile file;
-    QString filePath = projectDir.absolutePath().append("/VisitorPattern/").append("teste.json");
+    QString filePath = findFileWithExtension("json");
     QString json;
 
     file.setFileName(filePath);
